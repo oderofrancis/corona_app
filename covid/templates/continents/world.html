@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}World{% endblock %}
+
+{% block content %}
+
+{% for message in messages %}
+	<h4 id="messages" style="text-align: center;">{{message}}</h4>
+{% endfor %}
+
+<hr>
+
+{% endblock %}

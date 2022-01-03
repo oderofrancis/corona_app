@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}Comment{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid">
+
+	<div class="col-md-9" style="float:none;margin:auto;">
+
+		<form method="POST">
+
+			{% csrf_token %}
+
+			<div class="col-11">
+		        {{ form.name|as_crispy_field }}
+	    	</div>
+		
+			<div class="col-11">
+		        {{ form.email|as_crispy_field }}
+	    	</div>
+		
+				        
+	    	<div class="col-11">
+		        {{ form.comment|as_crispy_field }}
+	    	</div>
+		
+	    	<div class="col-11">
+		        {{ form.opinion|as_crispy_field }}
+	    	</div>
+		
+			<button class="btn btn-primary" name="submit" value="Save" type="submit" style="position:relative; left: 30%;width: 200px;">SUBMIT</button>
+	
+		</form>
+		
+	</div>
+	
+</div>
+
+{% endblock %}
