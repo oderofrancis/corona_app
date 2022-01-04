@@ -7,6 +7,9 @@ import pandas as pd
 
 # global links
 
+# confirmed=r'/media/afroteop/da442186-249a-498d-9496-21fc43465d5f/corona/COVID-19-master/csse_covid_19_data/csse_covid_19_time_series/csse_covid_19_time_series_confirmed_global.csv'
+# death=r'/media/afroteop/da442186-249a-498d-9496-21fc43465d5f/corona/COVID-19-master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_global.csv'
+
 confirmed=r'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv'
 death=r'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_global.csv'
 
@@ -62,7 +65,7 @@ def world(request):
     data_confirmed = data_confirmed[['Country/Region',data_confirmed.columns[-1]]].groupby('Country/Region').sum()
     data_confirmed = data_confirmed.reset_index()
     data_confirmed.columns=['Country/Region','confirmed']
-    data_confirmed = data_confirmed.sort_values(by='confirmed',ascending=False).head(100)
+    data_confirmed = data_confirmed.sort_values(by='confirmed',ascending=False).head(50)
     data_confirmed_values = data_confirmed['confirmed'].values.tolist()
     data_confirmed_names = data_confirmed['Country/Region'].values.tolist()
 
@@ -74,7 +77,7 @@ def world(request):
     data_death = data_death[['Country/Region',data_death.columns[-1]]].groupby('Country/Region').sum()
     data_death = data_death.reset_index()
     data_death.columns=['Country/Region','death']
-    data_death = data_death.sort_values(by='death',ascending=False).head(100)
+    data_death = data_death.sort_values(by='death',ascending=False).head(50)
     data_death_values = data_death['death'].values.tolist()
     data_death_names = data_death['Country/Region'].values.tolist()
 
@@ -134,7 +137,7 @@ def n_america(request):
     north_america_mean = round((north_america_total/all_north_america))
     north_america  = north_america[['Country/Region',north_america .columns[1]]].groupby('Country/Region').sum()
     north_america  = north_america.reset_index()
-    north_america  = north_america.sort_values(by='confirmed',ascending=False).head(20)
+    north_america  = north_america.sort_values(by='confirmed',ascending=False)
     north_america_values = north_america['confirmed'].values.tolist()
     north_america_names = north_america['Country/Region'].values.tolist()
 
@@ -158,7 +161,7 @@ def n_america(request):
     north_america_death = north_america_death[['Country/Region',north_america_death.columns[1]]].groupby('Country/Region').sum()
     north_america_death = north_america_death.reset_index()
     north_america_death.columns=['Country/Region','death']
-    north_america_death = north_america_death.sort_values(by='death',ascending=False).head(20)
+    north_america_death = north_america_death.sort_values(by='death',ascending=False)
     north_america_death_values = north_america_death['death'].values.tolist()
     north_america_death_names = north_america_death['Country/Region'].values.tolist()
 
@@ -221,7 +224,7 @@ def s_america(request):
     south_america  = south_america [['Country/Region',south_america .columns[1]]].groupby('Country/Region').sum()
     south_america  = south_america .reset_index()
     south_america.columns=['Country/Region','confirmed']
-    south_america  = south_america .sort_values(by='confirmed',ascending=False).head(20)
+    south_america  = south_america .sort_values(by='confirmed',ascending=False)
     south_america_values = south_america ['confirmed'].values.tolist()
     south_america_names = south_america ['Country/Region'].values.tolist()
 
@@ -247,7 +250,7 @@ def s_america(request):
     south_america_death = south_america_death[['Country/Region',south_america_death.columns[1]]].groupby('Country/Region').sum()
     south_america_death = south_america_death.reset_index()
     south_america_death.columns=['Country/Region','death']
-    south_america_death = south_america_death.sort_values(by='death',ascending=False).head(20)
+    south_america_death = south_america_death.sort_values(by='death',ascending=False)
     south_america_death_values = south_america_death['death'].values.tolist()
     south_america_death_names = south_america_death['Country/Region'].values.tolist()
 
@@ -397,7 +400,7 @@ def europe(request):
     europe_mean = round((europe_total/all_europe))
     europe = europe[['Country/Region',europe.columns[1]]].groupby('Country/Region').sum()
     europe = europe.reset_index()
-    europe = europe.sort_values(by='confirmed',ascending=False).head(20)
+    europe = europe.sort_values(by='confirmed',ascending=False)
     europe_values = europe['confirmed'].values.tolist()
     europe_names = europe['Country/Region'].values.tolist()
 
@@ -420,7 +423,7 @@ def europe(request):
     europe_death_mean = round((europe_death_total/all_europe_death))
     europe_death = europe_death[['Country/Region',europe_death.columns[1]]].groupby('Country/Region').sum()
     europe_death = europe_death.reset_index()
-    europe_death = europe_death.sort_values(by='death',ascending=False).head(20)
+    europe_death = europe_death.sort_values(by='death',ascending=False)
     europe_death_values = europe_death['death'].values.tolist()
     europe_death_names = europe_death['Country/Region'].values.tolist()
 
@@ -509,7 +512,7 @@ def africa(request):
     africa_death = africa_death[['Country/Region',africa_death.columns[1]]].groupby('Country/Region').sum()
     africa_death = africa_death.reset_index()
     africa_death.columns=['Country/Region','death']
-    africa_death = africa_death.sort_values(by='death',ascending=False).head(20)
+    africa_death = africa_death.sort_values(by='death',ascending=False)
     africa_death_values = africa_death['death'].values.tolist()
     africa_death_names = africa_death['Country/Region'].values.tolist()
 

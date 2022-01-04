@@ -4,6 +4,8 @@
 
 {% block content %}
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+
 <style>
 	h4{
 		text-align:center; 
@@ -33,26 +35,84 @@
 
 		<div class="col">
 	    	<div class="card" style="height:600px;">
-		    	<div class="card-header" style="font-size :20px;">
-		    		CONFIRMED : <b>{{oceania_total}}</b> cases.
+		    	<div class="card-header" style="font-size :20px; text-align:center;">
+		    		<b>CONFIRMED : <b>{{oceania_total}}</b> cases</b>
 		  		</div>
 
 	    		<div class="card-body" style="max-height: 550px;overflow: scroll; overflow-x:hidden;">
+	    			<form method="" enctype="multipart/form-data">
 
-	    			<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+			            {% csrf_token %}
+
+			            <!-- names of country -->
+
+			            <div style="float: left;width:30%;">
+
+			               {% for con in oceania_names %}
+
+			                  <table style="border-width: 6px; border: #333;width:100%;">
+
+			                     <tr>
+
+			                        <input class="btn btn-success" type="submit" value={{con}} name="country" style="float: left;width:100px;margin:7px;">
+
+			                     </tr>
+
+			                  </table>
+
+			               {% endfor %}
+
+			            </div>
+			        </form>
+
+	    			<!-- the chart -->
+
+			    	<div  style="width: 70%;float: left;">
+			    		<canvas id="myChart" style="height: 1300px; width: 100%;"></canvas>
+			    	</div>
 	    		</div>
 	    	</div>
 	    </div>
 
 		<div class="col">
 	    	<div class="card" style="height:600px;">
-		    	<div class="card-header" style="font-size :20px;">
-		   			DEATH : <b>{{oceania_death_total}}</b> cases.
+		    	<div class="card-header" style="font-size :20px; text-align:center;">
+		   			<b>DEATH : {{oceania_death_total}} cases</b>
 		  		</div>
 
 	      		<div class="card-body" style="max-height: 550px;overflow: scroll; overflow-x:hidden;">
-	        
-	        		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+
+
+	      			<form method="" enctype="multipart/form-data">
+
+			            {% csrf_token %}
+
+			            <!-- names of country -->
+
+			            <div style="float: left;width:30%;">
+
+			               {% for con in oceania_death_names %}
+
+			                  <table style="border-width: 6px; border: #333;width:100%;">
+
+			                     <tr>
+
+			                        <input class="btn btn-warning" type="submit" value={{con}} name="country" style="float: left;width:100px;margin:7px;">
+
+			                     </tr>
+
+			                  </table>
+
+			               {% endfor %}
+
+			            </div>
+			        </form>
+
+	    			<!-- the chart -->
+
+			    	<div  style="width: 70%;float: left;">
+			    		<canvas id="death" style="height: 1300px; width: 100%;"></canvas>
+			    	</div>
 	        	</div>
 	        </div>
 	       
@@ -60,16 +120,16 @@
 
 	    <div class="col">
 	    	<div class="card" style="height:600px;">
-	    		<div class="card-header" style="font-size :20px;">
-	    			DATA ANALYSIS
+	    		<div class="card-header" style="font-size :20px; text-align:center;">
+	    			<b>OVERALL DATA ANALYSIS</b>
 	    		</div>
 
 		    	<div class="card-body">
 		        	<h4>Confirmed mean : {{oceania_mean}}</h4>
-		        	<h4>Death mean : {{oceania_death_mean}}</h4>
+		        	<h4 style="color:#ff6666">Death mean : {{oceania_death_mean}}</h4>
 		        	<hr>
 		        	<h4>Spread Rate: {{oceania_spread_rate}} %</h4>
-		        	<h4>Death Rate : {{oceania_death_rate}} %</h4>
+		        	<h4 style="color:#ff6666">Death Rate : {{oceania_death_rate}} %</h4>
 		        	<hr>
 		        	<h5>WEAR MASK</h5>
 		        	<h5>KEEP SOCIAL DISTANCES</h5>
@@ -86,5 +146,117 @@
 	</div>
 	
 </div>
+
+{% block chart %}
+
+<!-- confirmed cases -->
+
+<script>
+	var ctx = document.getElementById('myChart').getContext('2d');
+
+        // chart declaration
+
+        // removal of chart legend
+
+    Chart.defaults.global.legend.display = false;
+
+    // chartoptions
+
+     var chartOptions = {
+			      legend: {
+			         display: false
+			      },
+			      scales: {
+			         xAxes: [{
+			            barPercentage:1
+			         }],
+			         yAxes: [
+			            {ticks: {display:false}},
+			            {display: false},
+			               ],
+			         elements: {
+			            rectangle: {
+			            borderSkipped: 'left',
+			                     }
+			               }
+			            }
+			      };
+
+	var chart = new Chart(ctx, {
+	    // The type of chart we want to create
+	    type: 'horizontalBar',
+
+	     data: {
+	        labels: {{ oceania_names | safe }},
+	        datasets: [{
+	            label : 'Affected Population',
+	            backgroundColor: '#80b3ff',
+	            borderColor: '#80b3ff',
+	            barThickness:'flex',
+	            data:{{ oceania_values | safe}}
+	        }]
+	    },
+
+	    // Configuration options go here
+	    options:  chartOptions
+	});
+
+</script>
+
+<!-- for death -->
+
+<script>
+
+	var ctx = document.getElementById('death').getContext('2d');
+
+        // chart declaration
+
+        // removal of chart legend
+
+    Chart.defaults.global.legend.display = false;
+
+    // chartoptions
+
+     var chartOptions = {
+			      legend: {
+			         display: false
+			      },
+			      scales: {
+			         xAxes: [{
+			            barPercentage:1
+			         }],
+			         yAxes: [
+			            {ticks: {display:false}},
+			            {display: false},
+			               ],
+			         elements: {
+			            rectangle: {
+			            borderSkipped: 'left',
+			                     }
+			               }
+			            }
+			      };
+
+	var chart = new Chart(ctx, {
+	    // The type of chart we want to create
+	    type: 'horizontalBar',
+
+	     data: {
+	        labels: {{ oceania_death_names | safe }},
+	        datasets: [{
+	            label : 'Affected Population',
+	            backgroundColor: '#ff6666',
+	            borderColor: '#80b3ff',
+	            barThickness:'flex',
+	            data:{{ oceania_death_values | safe}}
+	        }]
+	    },
+
+	    // Configuration options go here
+	    options:  chartOptions
+	});
+</script>
+
+{% endblock %}
 
 {% endblock %}
