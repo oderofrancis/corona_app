@@ -4,6 +4,6 @@ from .models import *
 # Register your models here.
 
 class CommentAdmin(admin.ModelAdmin):
-    list_display = ['name','email','opinion']
+    list_display = ['name','email','opinion','date_created']
 
 admin.site.register(Comment,CommentAdmin)

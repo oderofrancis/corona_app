@@ -4,4 +4,87 @@
 
 {% block content %}
 
-{% endblock %
+<style>
+	h4{
+		text-align:center; 
+		font-family: 'Times New Roman';
+	}
+
+	h5{
+		font-size: 25px;
+		text-align:center;
+		font-family: Purisa;
+	}
+	h6{
+		font-size: 17px;
+		text-align:center;
+	}
+	
+</style>
+
+<hr>
+
+	<h3 style="text-align:center;"><b>LATIN AMERICA CORONA CASES</b></h3>
+<hr>
+
+<div class="container-fluid">
+
+	<div class="row">
+
+		<div class="col">
+	    	<div class="card" style="height:600px;">
+		    	<div class="card-header" style="font-size :20px;">
+		    		CONFIRMED : <b>{{south_america_total}}</b> cases.
+		  		</div>
+
+	    		<div class="card-body" style="max-height: 550px;overflow: scroll; overflow-x:hidden;">
+
+	    			<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+	    		</div>
+	    	</div>
+	    </div>
+
+		<div class="col">
+	    	<div class="card" style="height:600px;">
+		    	<div class="card-header" style="font-size :20px;">
+		   			DEATH : <b>{{south_america_death_total}}</b> cases.
+		  		</div>
+
+	      		<div class="card-body" style="max-height: 550px;overflow: scroll; overflow-x:hidden;">
+	        
+	        		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+	        	</div>
+	        </div>
+	       
+	    </div>
+
+	    <div class="col">
+	    	<div class="card" style="height:600px;">
+	    		<div class="card-header" style="font-size :20px;">
+	    			DATA ANALYSIS
+	    		</div>
+
+		    	<div class="card-body">
+		        	<h4>Confirmed mean : {{south_america_mean}}</h4>
+		        	<h4>Death mean : {{south_america_death_mean}}</h4>
+		        	<hr>
+		        	<h4>Spread Rate: {{south_america_spread_rate}} %</h4>
+		        	<h4>Death Rate : {{south_america_death_rate}} %</h4>
+		        	<hr>
+		        	<h5>WEAR MASK</h5>
+		        	<h5>KEEP SOCIAL DISTANCES</h5>
+		        	<h5>SANITIZE YOUR HANDS</h5>
+		        	<h5>TUKOMESHE CORONA</h5>
+		        	<h5>YES WE CAN!</h5>
+		        	<hr>
+		        	<h6>Disclaimer:</h6>
+		        	<h6>The data is obtained from COVID-19 Data Repository by the Center for Systems Science and Engineering (CSSE) at Johns Hopkins University <a href="https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data" style="color: darkred;text-transform: lowercase;">here</a></h6>
+		      	</div>
+
+	    </div>
+
+	</div>
+	
+</div>
+
+{% endblock %}
