@@ -15,7 +15,7 @@ death=r'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_co
 
 # Continents 
 
-data_csv = pd.read_csv(r'/media/afroteop/da442186-249a-498d-9496-21fc43465d5f/corona/rona/Countries-Continents.csv')
+data_csv = pd.read_csv(r'https://raw.githubusercontent.com/oderofrancis/rona/main/Countries-Continents.csv')
 
 # population
 
