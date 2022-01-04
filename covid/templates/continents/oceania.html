@@ -40,13 +40,14 @@
 		  		</div>
 
 	    		<div class="card-body" style="max-height: 550px;overflow: scroll; overflow-x:hidden;">
+	    			
 	    			<form method="" enctype="multipart/form-data">
 
 			            {% csrf_token %}
 
 			            <!-- names of country -->
 
-			            <div style="float: left;width:30%;">
+			            <div style="float: left;width:40%;">
 
 			               {% for con in oceania_names %}
 
@@ -54,7 +55,7 @@
 
 			                     <tr>
 
-			                        <input class="btn btn-success" type="submit" value={{con}} name="country" style="float: left;width:100px;margin:7px;">
+			                        <input class="btn btn-info" type="submit" value={{con}} name="country" style="float: left;width:150px;margin:5px;">
 
 			                     </tr>
 
@@ -66,10 +67,31 @@
 			        </form>
 
 	    			<!-- the chart -->
+					
+					<form method="" enctype="multipart/form-data">
 
-			    	<div  style="width: 70%;float: left;">
-			    		<canvas id="myChart" style="height: 1300px; width: 100%;"></canvas>
-			    	</div>
+			            {% csrf_token %}
+
+			            <!-- names of country -->
+
+			            <div style="float: left;width:60%;">
+
+			               {% for con in oceania_values %}
+
+			                  <table style=" border: #333;width:100%;">
+
+			                     <tr>
+
+			                        <input class="btn btn-light" type="submit" value={{con}} name="country" style="float: center;width:200px;margin:5px;">
+
+			                     </tr>
+
+			                  </table>
+
+			               {% endfor %}
+
+			            </div>
+			        </form>
 	    		</div>
 	    	</div>
 	    </div>
@@ -89,7 +111,7 @@
 
 			            <!-- names of country -->
 
-			            <div style="float: left;width:30%;">
+			            <div style="float: left;width:40%;">
 
 			               {% for con in oceania_death_names %}
 
@@ -97,7 +119,7 @@
 
 			                     <tr>
 
-			                        <input class="btn btn-warning" type="submit" value={{con}} name="country" style="float: left;width:100px;margin:7px;">
+			                        <input class="btn btn-danger" type="submit" value={{con}} name="country" style="float: left;width:150px;margin:5px;">
 
 			                     </tr>
 
@@ -109,10 +131,31 @@
 			        </form>
 
 	    			<!-- the chart -->
+					
+					<form method="" enctype="multipart/form-data">
 
-			    	<div  style="width: 70%;float: left;">
-			    		<canvas id="death" style="height: 1300px; width: 100%;"></canvas>
-			    	</div>
+			            {% csrf_token %}
+
+			            <!-- names of country -->
+
+			            <div style="float: left;width:60%;">
+
+			               {% for con in oceania_death_values %}
+
+			                  <table style=" border: #333;width:100%;">
+
+			                     <tr>
+
+			                        <input class="btn btn-light" type="submit" value={{con}} name="country" style="float: center;width:200px;margin:5px;">
+
+			                     </tr>
+
+			                  </table>
+
+			               {% endfor %}
+
+			            </div>
+			        </form>
 	        	</div>
 	        </div>
 	       

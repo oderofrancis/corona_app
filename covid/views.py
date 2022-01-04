@@ -15,6 +15,8 @@ death=r'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_co
 
 # Continents 
 
+# data_csv = pd.read_csv(r'/media/afroteop/da442186-249a-498d-9496-21fc43465d5f/corona/rona/Countries-Continents.csv')
+
 data_csv = pd.read_csv(r'https://raw.githubusercontent.com/oderofrancis/rona/main/Countries-Continents.csv')
 
 # population
@@ -65,7 +67,7 @@ def world(request):
     data_confirmed = data_confirmed[['Country/Region',data_confirmed.columns[-1]]].groupby('Country/Region').sum()
     data_confirmed = data_confirmed.reset_index()
     data_confirmed.columns=['Country/Region','confirmed']
-    data_confirmed = data_confirmed.sort_values(by='confirmed',ascending=False).head(50)
+    data_confirmed = data_confirmed.sort_values(by='confirmed',ascending=False)
     data_confirmed_values = data_confirmed['confirmed'].values.tolist()
     data_confirmed_names = data_confirmed['Country/Region'].values.tolist()
 
@@ -77,7 +79,7 @@ def world(request):
     data_death = data_death[['Country/Region',data_death.columns[-1]]].groupby('Country/Region').sum()
     data_death = data_death.reset_index()
     data_death.columns=['Country/Region','death']
-    data_death = data_death.sort_values(by='death',ascending=False).head(50)
+    data_death = data_death.sort_values(by='death',ascending=False)
     data_death_values = data_death['death'].values.tolist()
     data_death_names = data_death['Country/Region'].values.tolist()
 

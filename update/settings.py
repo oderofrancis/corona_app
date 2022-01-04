@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'vv_&6$)%4a6o4wjei4t8uk8z2e^jzs9rac-3-mc^6&*4-)^rdt'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['updates-corona.herokuapp.com','127.0.0.1']
 
@@ -121,7 +121,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-STATIC_ROOT = Path(BASE_DIR,'staticfiles')
+# STATIC_ROOT = Path(BASE_DIR,'staticfiles')
 
 STATIC_URL = '/static/'
 
