@@ -20,7 +20,7 @@ class Comment(models.Model):
 
     def save(self,*args,**kwargs):
         account_sid='AC41cc2b25fdfb3f6d6a8b7ef353398d7e'
-        auth_token='eed5e1400a64bd08ec4dca3a78e4737a'
+        auth_token='1d42a07c1f331cc71547a5c38c3e750d'
         client=Client(account_sid,auth_token)
 
         message= client.messages.create(
