@@ -15,18 +15,18 @@ class Comment(models.Model):
     def __str__(self):
         return self.name
 
-    def __str__ (self):
-        return str(self.name)
+    # def __str__ (self):
+    #     return str(self.name)
 
-    def save(self,*args,**kwargs):
-        account_sid='AC41cc2b25fdfb3f6d6a8b7ef353398d7e'
-        auth_token='1d42a07c1f331cc71547a5c38c3e750d'
-        client=Client(account_sid,auth_token)
+    # def save(self,*args,**kwargs):
+    #     account_sid='AC41cc2b25fdfb3f6d6a8b7ef353398d7e'
+    #     auth_token='1d42a07c1f331cc71547a5c38c3e750d'
+    #     client=Client(account_sid,auth_token)
 
-        message= client.messages.create(
-                        body=f'Message from {self.name},email {self.email},with a suggestion that {self.comment} and feels like the web app is {self.opinion}.',
-                        from_='+14422449654',
-                        to='+254791061506'
-                )
-        print(message.sid)
-        return super().save(*args,**kwargs)
+    #     message= client.messages.create(
+    #                     body=f'Message from {self.name},email {self.email},with a suggestion that {self.comment} and feels like the web app is {self.opinion}.',
+    #                     from_='+14422449654',
+    #                     to='+254791061506'
+    #             )
+    #     print(message.sid)
+    #     return super().save(*args,**kwargs)
